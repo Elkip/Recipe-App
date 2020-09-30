@@ -1,5 +1,7 @@
 package springframework.guru.recipe.domain;
 
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,7 +10,6 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String description;
     private Integer prepTime;
     private Integer cookTime;
@@ -17,14 +18,17 @@ public class Recipe {
     private String url;
     private String directions;
 
+    @Lob
+    private Byte[] image;
+
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficultly;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
 
-    @Lob
-    private Byte[] image;
+    @ManyToMany()
+    private Set<Category> categories;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
