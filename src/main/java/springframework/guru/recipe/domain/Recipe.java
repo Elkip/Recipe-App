@@ -16,8 +16,9 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    //todo add
-    //private Difficulty difficultly;
+
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficultly;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
