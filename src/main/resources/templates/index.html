@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Recipe Home</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
+    <script src="/webjars/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -25,12 +28,12 @@
                             </tr>
                             </thead>
                             <tr th:remove="all">
-                                <td th:text="${recipe.id}">123</td>
-                                <td th:text="${recipe.description}">Tasty!</td>
+                                <td>123</td>
+                                <td>Tasty!</td>
                             </tr>
                             <tr th:remove="all">
-                                <td th:text="${recipe.id}">456</td>
-                                <td th:text="${recipe.description}">Tasty!</td>
+                                <td>456</td>
+                                <td>Tasty!</td>
                             </tr>
                             <tr th:each="recipe: ${recipes}">
                                 <td th:text="${recipe.id}">789</td>
