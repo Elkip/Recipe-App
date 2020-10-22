@@ -7,16 +7,17 @@ import springframework.guru.recipe.domain.UnitOfMeasure;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UnitOfMeasureCommandToObjectTest {
+class UnitOfMeasureObjectToCommandTest {
+
 
     public static final String DESCRIPTION = "description";
     public static final Long LONG_VALUE = 1L;
 
-    UnitOfMeasureCommandToObject converter;
+    UnitOfMeasureObjectToCommand converter;
 
     @BeforeEach
     void setUp() {
-        converter = new UnitOfMeasureCommandToObject();
+        converter = new UnitOfMeasureObjectToCommand();
     }
 
 
@@ -27,19 +28,20 @@ class UnitOfMeasureCommandToObjectTest {
 
     @Test
     public void testEmptyObject() {
-        assertNotNull(converter.convert(new UnitOfMeasureCommand()));
+        assertNotNull(converter.convert(new UnitOfMeasure()));
     }
 
     @Test
     void convert() {
-        UnitOfMeasureCommand command = new UnitOfMeasureCommand();
-        command.setId(LONG_VALUE);
-        command.setDescription(DESCRIPTION);
+        UnitOfMeasure uom = new UnitOfMeasure();
+        uom.setId(LONG_VALUE);
+        uom.setDescription(DESCRIPTION);
 
-        UnitOfMeasure unitOfMeasure = converter.convert(command);
+        UnitOfMeasureCommand command = converter.convert(uom);
 
-        assertNotNull(unitOfMeasure);
-        assertEquals(LONG_VALUE, unitOfMeasure.getId());
-        assertEquals(DESCRIPTION, unitOfMeasure.getDescription());
+        assertNotNull(command);
+        assertEquals(LONG_VALUE, command.getId());
+        assertEquals(DESCRIPTION, command.getDescription());
     }
+
 }
