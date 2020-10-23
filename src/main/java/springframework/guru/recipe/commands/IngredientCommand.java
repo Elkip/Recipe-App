@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @NoArgsConstructor
-public class IngredentCommand {
+public class IngredientCommand {
     private Long id;
     private String description;
     private BigDecimal amount;

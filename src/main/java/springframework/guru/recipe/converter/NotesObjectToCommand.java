@@ -1,6 +1,6 @@
 package springframework.guru.recipe.converter;
 
-import com.sun.istack.Nullable;
+import org.springframework.lang.Nullable;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
