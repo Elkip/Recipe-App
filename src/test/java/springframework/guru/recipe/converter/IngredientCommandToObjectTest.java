@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import springframework.guru.recipe.commands.IngredientCommand;
 import springframework.guru.recipe.commands.UnitOfMeasureCommand;
 import springframework.guru.recipe.domain.Ingredient;
-import springframework.guru.recipe.domain.UnitOfMeasure;
 
 import java.math.BigDecimal;
 
@@ -22,7 +21,7 @@ class IngredientCommandToObjectTest {
 
     @BeforeEach
     void setUp() {
-        converter = new IngredientCommandToObject();
+        converter = new IngredientCommandToObject(new UnitOfMeasureCommandToObject());
     }
 
     @Test

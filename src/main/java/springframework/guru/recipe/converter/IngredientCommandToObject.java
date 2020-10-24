@@ -10,7 +10,12 @@ import springframework.guru.recipe.domain.Ingredient;
 @Component
 public class IngredientCommandToObject implements Converter<IngredientCommand, Ingredient> {
 
-    UnitOfMeasureCommandToObject converter = new UnitOfMeasureCommandToObject();
+    private final UnitOfMeasureCommandToObject converter;
+
+    public IngredientCommandToObject(UnitOfMeasureCommandToObject converter) {
+        this.converter = converter;
+    }
+
 
     @Synchronized
     @Nullable

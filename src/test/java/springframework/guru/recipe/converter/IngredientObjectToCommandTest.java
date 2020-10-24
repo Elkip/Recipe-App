@@ -21,7 +21,7 @@ class IngredientObjectToCommandTest {
 
     @BeforeEach
     void setUp() {
-        converter = new IngredientObjectToCommand();
+        converter = new IngredientObjectToCommand(new UnitOfMeasureObjectToCommand());
     }
 
     @Test
