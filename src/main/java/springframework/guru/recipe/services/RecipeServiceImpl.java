@@ -2,6 +2,7 @@ package springframework.guru.recipe.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import springframework.guru.recipe.commands.RecipeCommand;
 import springframework.guru.recipe.converter.RecipeCommandToObject;
 import springframework.guru.recipe.converter.RecipeObjectoToCommand;
@@ -35,10 +36,11 @@ public class RecipeServiceImpl implements RecipeService{
         return recipeSet;
     }
 
+    @Override
     public Recipe findById(Long id) {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
-        if (!recipeOptional.isPresent()) {
+        if (recipeOptional.isEmpty()) {
             throw new RuntimeException("Recipe Not Found!");
         }
 
@@ -46,7 +48,10 @@ public class RecipeServiceImpl implements RecipeService{
     }
 
     @Override
+    @Transactional
     public RecipeCommand saveRecipeCommand(RecipeCommand command) {
+        if (command == null)
+            return null;
         Recipe detachedRecipe = recipeCommandToObject.convert(command);
         Recipe savedRecipe = recipeRepository.save(detachedRecipe);
         log.debug("Saved Recipe ID: " + savedRecipe.getId());
