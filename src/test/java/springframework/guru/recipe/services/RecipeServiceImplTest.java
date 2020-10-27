@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import springframework.guru.recipe.converter.RecipeCommandToObject;
+import springframework.guru.recipe.converter.RecipeObjectoToCommand;
 import springframework.guru.recipe.domain.Recipe;
 import springframework.guru.recipe.repositories.RecipeRepository;
 
@@ -21,11 +23,17 @@ class RecipeServiceImplTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeObjectoToCommand recipeObjectoToCommand;
+
+    @Mock
+    RecipeCommandToObject recipeCommandToObject;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeServiceImpl(recipeRepository);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeObjectoToCommand, recipeCommandToObject);
     }
 
     @Test

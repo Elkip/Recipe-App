@@ -2,6 +2,9 @@ package springframework.guru.recipe.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import springframework.guru.recipe.commands.RecipeCommand;
+import springframework.guru.recipe.converter.RecipeCommandToObject;
+import springframework.guru.recipe.converter.RecipeObjectoToCommand;
 import springframework.guru.recipe.domain.Recipe;
 import springframework.guru.recipe.repositories.RecipeRepository;
 
@@ -14,9 +17,14 @@ import java.util.Set;
 public class RecipeServiceImpl implements RecipeService{
 
     private final RecipeRepository recipeRepository;
+    private final RecipeObjectoToCommand recipeObjectoToCommand;
+    private final RecipeCommandToObject recipeCommandToObject;
 
-    public RecipeServiceImpl(RecipeRepository recipeRepository) {
+    public RecipeServiceImpl(RecipeRepository recipeRepository, RecipeObjectoToCommand recipeObjectoToCommand,
+                             RecipeCommandToObject recipeCommandToObject) {
         this.recipeRepository = recipeRepository;
+        this.recipeObjectoToCommand = recipeObjectoToCommand;
+        this.recipeCommandToObject = recipeCommandToObject;
     }
 
     @Override
@@ -35,5 +43,13 @@ public class RecipeServiceImpl implements RecipeService{
         }
 
         return recipeOptional.get();
+    }
+
+    @Override
+    public RecipeCommand saveRecipeCommand(RecipeCommand command) {
+        Recipe detachedRecipe = recipeCommandToObject.convert(command);
+        Recipe savedRecipe = recipeRepository.save(detachedRecipe);
+        log.debug("Saved Recipe ID: " + savedRecipe.getId());
+        return recipeObjectoToCommand.convert(savedRecipe);
     }
 }
