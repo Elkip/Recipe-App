@@ -27,7 +27,7 @@ public class IngredientObjectToCommand implements Converter<Ingredient, Ingredie
         ingredientCommand.setId(ingredient.getId());
         ingredientCommand.setDescription(ingredient.getDescription());
         ingredientCommand.setAmount(ingredient.getAmount());
-        ingredientCommand.setUnitOfMeasure(converter.convert(ingredient.getUom()));
+        ingredientCommand.setUom(converter.convert(ingredient.getUom()));
         return ingredientCommand;
     }
 }

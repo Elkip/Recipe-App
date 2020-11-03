@@ -41,8 +41,8 @@ class IngredientObjectToCommandTest {
         assertEquals(ID_VALUE, command.getId());
         assertEquals(DESCRIPTION, command.getDescription());
         assertEquals(AMOUNT, command.getAmount());
-        assertNotNull(command.getUnitOfMeasure());
-        assertEquals(UOM_ID, command.getUnitOfMeasure().getId());
+        assertNotNull(command.getUom());
+        assertEquals(UOM_ID, command.getUom().getId());
     }
 
     @Test
@@ -59,7 +59,7 @@ class IngredientObjectToCommandTest {
         assertEquals(ID_VALUE, command.getId());
         assertEquals(DESCRIPTION, command.getDescription());
         assertEquals(AMOUNT, command.getAmount());
-        assertNull(command.getUnitOfMeasure());
+        assertNull(command.getUom());
     }
 
     @Test
