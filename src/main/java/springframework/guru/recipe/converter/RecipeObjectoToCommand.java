@@ -38,6 +38,7 @@ public class RecipeObjectoToCommand implements Converter<Recipe, RecipeCommand> 
         command.setDifficulty(source.getDifficultly());
         command.setDirections(source.getDirections());
         command.setNotes(notesConverter.convert(source.getNotes()));
+        command.setImage(source.getImage());
 
         if (source.getCategories() != null && source.getCategories().size() >= 0)
             source.getCategories()
