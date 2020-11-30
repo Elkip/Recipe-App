@@ -8,6 +8,7 @@ import springframework.guru.recipe.commands.RecipeCommand;
 import springframework.guru.recipe.converter.RecipeCommandToObject;
 import springframework.guru.recipe.converter.RecipeObjectoToCommand;
 import springframework.guru.recipe.domain.Recipe;
+import springframework.guru.recipe.exceptions.NotFoundException;
 import springframework.guru.recipe.repositories.RecipeRepository;
 
 import java.util.HashSet;
@@ -85,6 +86,16 @@ class RecipeServiceImplTest {
         assertNotNull(recipeReturned);
         verify(recipeRepository, times(1)).findById(anyLong());
         verify(recipeRepository, never()).findAll();
+    }
+
+    @Test
+    void getRecipeByIdNotFoundTest() {
+        Optional<Recipe> optionalRecipe = Optional.empty();
+        when(recipeRepository.findById(anyLong())).thenReturn(optionalRecipe);
+
+        assertThrows(NotFoundException.class, () -> {
+            Recipe recipe = recipeService.findById(1L);
+        });
     }
 
 

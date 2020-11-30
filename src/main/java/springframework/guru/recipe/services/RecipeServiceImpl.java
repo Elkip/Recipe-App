@@ -7,6 +7,7 @@ import springframework.guru.recipe.commands.RecipeCommand;
 import springframework.guru.recipe.converter.RecipeCommandToObject;
 import springframework.guru.recipe.converter.RecipeObjectoToCommand;
 import springframework.guru.recipe.domain.Recipe;
+import springframework.guru.recipe.exceptions.NotFoundException;
 import springframework.guru.recipe.repositories.RecipeRepository;
 
 import java.util.HashSet;
@@ -41,7 +42,7 @@ public class RecipeServiceImpl implements RecipeService{
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
         if (recipeOptional.isEmpty())
-            throw new RuntimeException("Recipe Not Found!");
+            throw new NotFoundException("Recipe Not Found!");
 
 
         return recipeOptional.get();
