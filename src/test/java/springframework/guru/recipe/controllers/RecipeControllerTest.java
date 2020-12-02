@@ -7,6 +7,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.client.HttpClientErrorException;
 import springframework.guru.recipe.commands.RecipeCommand;
 import springframework.guru.recipe.domain.Recipe;
 import springframework.guru.recipe.exceptions.NotFoundException;
@@ -108,5 +109,12 @@ class RecipeControllerTest {
         mockMvc.perform(get("/recipe/1/show"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("404error"));
+    }
+
+    @Test
+    public void testBadRequest() throws Exception {
+        mockMvc.perform(get("/recipe/asdf/show"))
+                .andExpect(status().isBadRequest())
+                .andExpect(view().name("400error"));
     }
 }
