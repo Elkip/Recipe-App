@@ -68,12 +68,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- Databases -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>5.3.5.Final</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>2.1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
