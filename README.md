@@ -1,5 +1,4 @@
 [![CircleCI](https://circleci.com/gh/Elkip/Recipe-App.svg?style=svg&circle-token=6c7c8b5cd33e25f3545b8f11cd2ff351c86b28d9)](https://circleci.com/gh/Elkip/Recipe-App)
-[![codecov](https://codecov.io/gh/Elkip/Recipe-App/branch/master/graph/badge.svg?token=97F8YW8KD6)](https://codecov.io/gh/Elkip/Recipe-App)
 
 # Getting Started
 
